@@ -1,5 +1,6 @@
 import "./App.css";
 import { Header, Footer } from "./components/features/index";
+import { Route, Routes } from "react-router-dom";
 import {
   Signup,
   Home,
@@ -7,15 +8,28 @@ import {
   Schedule,
   Standings,
   Teams,
+  PageNotFound,
+  Profile,
 } from "./components/pages/index";
+
 function App() {
+
   return (
     <div className="App  ">
       <Header />
-      <section className=" h-screen grid place-items-center  ">
-        <div className=" w-screen mx-auto  ">
-          <Signup />
-        </div>
+      <section className=" min-h-screen">
+      
+        <Login/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/standings" element={<Standings />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
       </section>
       <Footer />
     </div>
